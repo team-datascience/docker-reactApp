@@ -9,4 +9,4 @@ before_install:
     - docker build  -t docker-react-app_tests -f Dockerfile.dev .
 #status other than zero then means our command is failed & npm test never exists so need to terminate so we use -- --coverage
 script:
-    - docker run docker-react-app_tests npm run test -- --coverage
+    - docker run docker-react-app_tests npm run test -- --coverage --watchAll=false
