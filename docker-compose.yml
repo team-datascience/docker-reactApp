@@ -1,0 +1,19 @@
+version: '3'
+services:
+    webapp:
+        build:    # if we use . by default this will check for Dockerfile to ask use Dockerfile.dev use context
+          context: .
+          dockerfile: Dockerfile.dev
+        ports: 
+            - "2000:3000"
+        volumes: 
+            - /app/node_modules
+            - ".:/app"
+    test:
+        build:    # if we use . by default this will check for Dockerfile to ask use Dockerfile.dev use context
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes: 
+            - /app/node_modules
+            - ".:/app"
+        command: [ "npm" ,"run" ,"test" ]

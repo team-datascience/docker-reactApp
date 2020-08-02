@@ -1,0 +1,11 @@
+# specify base images: Alpine Linux is a security-oriented, lightweight Linux distribution based on musllibc and busybox.
+FROM node:alpine
+# ENV CI=true   
+WORKDIR /app
+COPY package.json  .
+RUN npm install
+COPY . .
+# npm start
+# npm run build
+# npm test
+CMD ["npm","run","start"] 
