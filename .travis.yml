@@ -1,0 +1,12 @@
+sudo: required
+# services docker 
+services:
+    - docker
+#commands to exicute build the image
+before_install:
+    #- docker build -f Dockerfile.dev .
+    #- docker build  -t rabbani8/docker-react-app:v_$(date +%Y%m%d%H%M%S) -f Dockerfile.dev .
+    - docker build  -t docker-react-app_tests -f Dockerfile.dev .
+#status other than zero then means our command is failed & npm test never exists so need to terminate so we use -- --coverage
+script:
+    - docker run docker-react-app_tests npm run test -- -- coverage
