@@ -10,5 +10,5 @@ RUN npm run build
 # run phase copy /app/build send to nginx server ,host static html content https://hub.docker.com/_/nginx
 FROM nginx   
 EXPOSE 80 
-WORKDIR /app
+# WORKDIR /app
 COPY --from=builder /app/build /usr/share/nginx/html
