@@ -10,3 +10,19 @@ before_install:
 #status other than zero then means our command is failed & npm test never exists so need to terminate so we use -- --coverage
 script:
     - docker run docker-react-app_tests npm run test -- --coverage --watchAll=false
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-react-app"
+    env: "DockerReactApp-env"
+    #s3 buscket essentailly a hard drive
+    bucket_name: "elasticbeanstalk-us-east-2-635584874543"
+    #exact same as app name docker-react-app
+    bucket_path: "docker-react-app"
+    #DockerReactApp-env.eba-w9kdvf6k.us-east-2.elasticbeanstalk.com
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+        secure: "${AWS_SECRET_KEY}""
