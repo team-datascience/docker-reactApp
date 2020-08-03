@@ -11,4 +11,5 @@ RUN npm run build
 FROM nginx   
 EXPOSE 80 
 # WORKDIR /app
+RUN pwd 
 COPY --from=builder /app/build /usr/share/nginx/html
