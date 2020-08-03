@@ -2,8 +2,8 @@
 # specify base images: Alpine Linux is a security-oriented, lightweight Linux distribution based on musllibc and busybox.
 #specify the phase AS builder
 FROM node:alpine  AS builder 
-WORKDIR /app
-COPY package.json  .
+WORKDIR '/app'
+COPY package.json  ./
 RUN npm install
 COPY . .
 RUN npm run build
